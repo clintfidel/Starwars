@@ -44,7 +44,11 @@ const Root = ({ type }: { type: EnumRootType }) => {
           } else if ('vehicle_class' in rootData) {
               value = <VehicleCard key={index} vehicle={rootData as Vehicle} />
           } else {
-              value = <div>No Data</div>
+              value = (<div className="d-flex justify-content-between">
+                <div className="text-center">
+                  No Data Available
+                </div>
+              </div>)
           }
         }
         return value
@@ -70,7 +74,6 @@ const Root = ({ type }: { type: EnumRootType }) => {
         <div className="row justify-content-center">
           { (() => {
             let dataValue = root.payload ? root.payload.results : [];
-
             return renderCard(dataValue)
           })() }
         </div>
